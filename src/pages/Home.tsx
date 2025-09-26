@@ -1,8 +1,12 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import LogoCarousel from '../components/LogoCarousel'
 import Testimonials from '../components/Testimonials'
+import LogoMarquee from '../components/LogoMarquee'
+import { Phone, Calendar, ShieldCheck, Gauge, MessageSquare, Headphones } from 'lucide-react'
+import LightFX from '../components/LightFX'
+import LeadCapture from '../components/LeadCapture'
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -19,6 +23,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 pointer-events-none">
           <motion.div style={{ y: y1 }} className="h-[60vh] sm:h-[70vh] bg-gradient-to-b from-medical-primary/90 to-white" />
           <motion.div style={{ y: y2 }} className="absolute inset-x-0 top-10 mx-auto max-w-5xl h-64 blur-3xl rounded-full bg-gradient-to-r from-events-accent/40 via-medical-accent/40 to-gastro-accent/30" />
+          <LightFX />
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="max-w-3xl">
@@ -36,6 +41,7 @@ export default function Home() {
                 Für Gastronomie
               </Link>
             </motion.div>
+            <LeadCapture />
           </div>
         </div>
       </section>
@@ -76,6 +82,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Metrics Band */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <Metric value={40} suffix="%" label="weniger Telefonzeit" />
+          <Metric value={35} suffix="%" label="weniger No-Shows" />
+          <Metric value={18} suffix="–25%" label="Umsatz-Plus Gastronomie" />
+          <Metric value={4.8} suffix="/5" label="Zufriedenheit" />
+        </div>
+      </section>
+
+      {/* Feature Grid */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-2xl sm:text-3xl font-bold">Warum VoiceAgents?</h2>
+        <p className="mt-2 text-gray-700 max-w-2xl">Agenten, nicht Apps. Erlebbar in Tagen, nicht in Monaten. Entwickelt für echte Betriebe.</p>
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Feature icon={<Phone className="h-5 w-5"/>} title="Telefon-Intelligenz" desc="Erkennt Anliegen, priorisiert, ruft zurück, bestätigt per SMS." />
+          <Feature icon={<Calendar className="h-5 w-5"/>} title="Kalender-Konnektoren" desc="Bidirektional – keine Doppelbuchungen, klare Bestätigungen." />
+          <Feature icon={<ShieldCheck className="h-5 w-5"/>} title="Datenschutz by Design" desc="DSGVO-konform, Audit-Trails, EU-Region – Enterprise-ready." />
+          <Feature icon={<Gauge className="h-5 w-5"/>} title="Umsatz & Auslastung" desc="Reduziert No-Shows, füllt freie Slots, steigert Auslastung." />
+          <Feature icon={<MessageSquare className="h-5 w-5"/>} title="Omni-Channel" desc="Telefon, WhatsApp, E-Mail – nahtloser Übergang & Kontext." />
+          <Feature icon={<Headphones className="h-5 w-5"/>} title="Hands-on Support" desc="Direkter Draht zum Team. Kein Ticket-Pingpong." />
+        </div>
+      </section>
+
       {/* Philosophie + Social Proof */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -85,7 +115,10 @@ export default function Home() {
               Wir verkaufen keine Tools, wir liefern Fokus, Umsatz und Kontrolle. Fair, transparent, made in Austria.
             </p>
           </div>
-          <LogoCarousel />
+          <div className="space-y-6">
+            <LogoCarousel />
+            <LogoMarquee />
+          </div>
         </div>
       </section>
 
@@ -125,6 +158,43 @@ function Flagship({ title, description, to, color }: { title: string; descriptio
         Mehr erfahren →
       </Link>
     </motion.div>
+  )
+}
+
+function Feature({ icon, title, desc }: { icon: ReactNode; title: string; desc: string }) {
+  return (
+    <motion.div whileHover={{ y: -3 }} className="rounded-xl glass p-6 shadow-lg hover:shadow-xl transition-all">
+      <div className="h-10 w-10 rounded-lg bg-white grid place-items-center shadow-sm border border-gray-100">
+        {icon}
+      </div>
+      <h3 className="mt-4 font-semibold">{title}</h3>
+      <p className="text-sm text-gray-600 mt-2">{desc}</p>
+    </motion.div>
+  )
+}
+
+function Metric({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
+  const [display, setDisplay] = useState(0)
+  useEffect(() => {
+    const duration = 1200
+    const start = performance.now()
+    let raf = 0
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / duration)
+      const eased = 1 - Math.pow(1 - p, 3)
+      setDisplay(Number((value * eased).toFixed(1)))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [value])
+  return (
+    <div className="rounded-xl glass p-5 text-center shadow-md">
+      <div className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+        {display}{suffix ?? ''}
+      </div>
+      <div className="text-xs sm:text-sm text-gray-600 mt-1">{label}</div>
+    </div>
   )
 }
  
