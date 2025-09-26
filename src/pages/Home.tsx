@@ -13,7 +13,6 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -80])
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -40])
 
   const [problem, setProblem] = useState<'telefon' | 'admin' | null>(null)
 
@@ -24,7 +23,30 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 pointer-events-none">
           <HeroVideo />
           <motion.div style={{ y: y1 }} className="h-[60vh] sm:h-[70vh] bg-gradient-to-b from-medical-primary/90 to-white" />
-          <motion.div style={{ y: y2 }} className="absolute inset-x-0 top-10 mx-auto max-w-5xl h-64 blur-3xl rounded-full bg-gradient-to-r from-events-accent/40 via-medical-accent/40 to-gastro-accent/30" />
+          {/* Organic animated glow (replaces static colored bar) */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.span
+              initial={{ x: -200, y: 40, scale: 0.9, opacity: 0.6 }}
+              animate={{ x: [ -200, 40, 120, -200 ], y: [40, 10, 60, 40 ], scale: [0.9, 1.05, 1, 0.9 ] }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute left-10 top-10 h-64 w-64 rounded-full blur-3xl"
+              style={{ background: 'radial-gradient(circle at 30% 30%, rgba(168,85,247,0.45), transparent 60%)' }}
+            />
+            <motion.span
+              initial={{ x: 320, y: 140, scale: 1, opacity: 0.55 }}
+              animate={{ x: [320, 200, 420, 320], y: [140, 120, 160, 140], scale: [1, 1.08, 0.96, 1] }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute right-20 top-20 h-72 w-72 rounded-full blur-3xl"
+              style={{ background: 'radial-gradient(circle at 70% 30%, rgba(23,178,106,0.45), transparent 60%)' }}
+            />
+            <motion.span
+              initial={{ x: 40, y: 280, scale: 1, opacity: 0.5 }}
+              animate={{ x: [40, 120, -40, 40], y: [280, 260, 300, 280], scale: [1, 1.04, 0.98, 1] }}
+              transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute left-1/3 bottom-10 h-80 w-80 rounded-full blur-3xl"
+              style={{ background: 'radial-gradient(circle at 50% 50%, rgba(197,157,95,0.45), transparent 60%)' }}
+            />
+          </div>
           <LightFX />
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">

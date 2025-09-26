@@ -10,8 +10,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-gray-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-tr from-events-accent to-medical-accent shadow-glow" />
-          <span className="font-extrabold tracking-tight">VoiceAgents</span>
+          <img src="/logos/workflow-ai.svg" alt="Workflow AI" className="h-8 w-auto" loading="eager" />
+          <span className="font-extrabold tracking-tight">Workflow AI</span>
           <span className="hidden sm:inline text-xs text-gray-500">Made in Austria 🇦🇹</span>
         </Link>
         <nav className="flex items-center gap-1">
