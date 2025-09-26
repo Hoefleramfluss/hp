@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="VoiceAgents – Autonomie statt Apps OG Image">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0a2540"/>
+      <stop offset="1" stop-color="#17B26A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#17B26A"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="40"/></filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0a0f1a"/>
+
+  <circle cx="240" cy="160" r="180" fill="url(#accent)" opacity="0.25" filter="url(#blur)"/>
+  <circle cx="980" cy="520" r="220" fill="#A855F7" opacity="0.18" filter="url(#blur)"/>
+
+  <g transform="translate(80, 120)">
+    <rect rx="16" width="120" height="120" fill="#0F172A" stroke="#334155"/>
+    <g fill="none" stroke="url(#accent)" stroke-width="6" stroke-linecap="round" transform="translate(26,32)">
+      <circle cx="24" cy="28" r="14"/>
+      <circle cx="58" cy="18" r="9"/>
+      <circle cx="58" cy="42" r="9"/>
+      <path d="M38 28H104M58 18C78 18 92 26 104 30M58 42C88 42 110 36 132 28"/>
+    </g>
+  </g>
+
+  <text x="240" y="200" font-family="Inter, system-ui, -apple-system" font-weight="800" font-size="72" fill="#fff">VoiceAgents</text>
+  <text x="240" y="260" font-family="Inter, system-ui, -apple-system" font-weight="600" font-size="36" fill="#E2E8F0">Autonomie statt Apps</text>
+
+  <text x="80" y="420" font-family="Inter, system-ui, -apple-system" font-size="30" fill="#E2E8F0">• 40% weniger Telefonzeit  • 35% weniger No-Shows  • EU-Hosting  • DSGVO-konform</text>
+  <text x="80" y="470" font-family="Inter, system-ui, -apple-system" font-size="24" fill="#94A3B8">Für Praxen, Gastronomie, Werkstätten und Events</text>
+
+  <rect x="80" y="510" rx="10" width="340" height="64" fill="#111827" stroke="#374151"/>
+  <text x="110" y="555" font-family="Inter, system-ui, -apple-system" font-weight="700" font-size="26" fill="#fff">Demo anfordern → voiceagents.at</text>
+</svg>

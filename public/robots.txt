@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://geminihp-site-11d0c1c1f713.herokuapp.com/sitemap.xml

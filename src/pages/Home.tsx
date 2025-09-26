@@ -7,6 +7,7 @@ import LogoMarquee from '../components/LogoMarquee'
 import { Phone, Calendar, ShieldCheck, Gauge, MessageSquare, Headphones } from 'lucide-react'
 import LightFX from '../components/LightFX'
 import LeadCapture from '../components/LeadCapture'
+import HeroVideo from '../components/HeroVideo'
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -21,6 +22,7 @@ export default function Home() {
       {/* Hero Section with stronger parallax via useScroll */}
       <section className="relative shine" ref={heroRef}>
         <div className="absolute inset-0 -z-10 pointer-events-none">
+          <HeroVideo />
           <motion.div style={{ y: y1 }} className="h-[60vh] sm:h-[70vh] bg-gradient-to-b from-medical-primary/90 to-white" />
           <motion.div style={{ y: y2 }} className="absolute inset-x-0 top-10 mx-auto max-w-5xl h-64 blur-3xl rounded-full bg-gradient-to-r from-events-accent/40 via-medical-accent/40 to-gastro-accent/30" />
           <LightFX />
