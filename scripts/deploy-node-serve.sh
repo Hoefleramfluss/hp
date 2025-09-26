@@ -2,13 +2,13 @@
 set -euo pipefail
 
 APP_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-DEPLOY_DIR="$HOME/GeminihpSiteStatic"
+DEPLOY_DIR="$HOME/GeminihpSiteNode"
 APP_NAME="geminihp-site"
 HEROKU_GIT="https://git.heroku.com/${APP_NAME}.git"
 
-# Ensure Heroku app uses Static buildpack
+# Ensure Heroku app uses Node buildpack
 heroku buildpacks:clear -a "$APP_NAME" || true
-heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static -a "$APP_NAME"
+heroku buildpacks:set heroku/nodejs -a "$APP_NAME"
 
 # Install deps and build
 cd "$APP_DIR"
@@ -16,19 +16,24 @@ if [ ! -f package-lock.json ]; then npm install --package-lock-only >/dev/null 2
 npm ci
 npm run build
 
-# Prepare minimal static repo
+# Prepare minimal Node+serve repo
 rm -rf "$DEPLOY_DIR"
 mkdir -p "$DEPLOY_DIR"
 cp -R "$APP_DIR/dist" "$DEPLOY_DIR/"
-cat > "$DEPLOY_DIR/static.json" <<'JSON'
+cat > "$DEPLOY_DIR/package.json" <<'JSON'
 {
-  "root": "dist",
-  "clean_urls": true,
-  "https_only": true,
-  "routes": { "/**": "index.html" },
-  "headers": { "/**": { "Cache-Control": "public, max-age=600" } }
+  "name": "geminihp-site",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve -s dist -l ${PORT}",
+    "start:prod": "serve -s dist -l ${PORT}"
+  },
+  "dependencies": { "serve": "^14.2.4" },
+  "engines": { "node": "20.x" }
 }
 JSON
+printf "web: npm run start:prod\n" > "$DEPLOY_DIR/Procfile"
 
 cd "$DEPLOY_DIR"
 if [ ! -d .git ]; then
@@ -36,7 +41,7 @@ if [ ! -d .git ]; then
 fi
 
 git add -A
-(git commit -m "deploy: static buildpack (dist + static.json)" || true)
+(git commit -m "deploy: node serve (dist + Procfile + package.json)" || true)
 
 if git remote | grep -q '^heroku$'; then
   git remote set-url heroku "$HEROKU_GIT"
@@ -44,7 +49,7 @@ else
   git remote add heroku "$HEROKU_GIT"
 fi
 
-echo "Pushing to Heroku app: $APP_NAME"
+echo "Pushing to Heroku app: $APP_NAME via Node buildpack"
 git push heroku main -f
 
 echo "Done. Visit:"
