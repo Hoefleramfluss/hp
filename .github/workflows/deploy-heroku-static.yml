@@ -1,0 +1,60 @@
+name: Deploy to Heroku (Static)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Prepare minimal static repository
+        run: |
+          rm -rf deploy && mkdir -p deploy
+          cp -R dist deploy/
+          cat > deploy/static.json <<'JSON'
+          {
+            "root": "dist",
+            "clean_urls": true,
+            "https_only": true,
+            "routes": { "/**": "index.html" },
+            "headers": { "/**": { "Cache-Control": "public, max-age=600" } }
+          }
+          JSON
+          cd deploy
+          git init -b main
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -m "deploy: static buildpack (dist + static.json)"
+
+      - name: Push to Heroku (Static buildpack)
+        env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          if [ -z "$HEROKU_APP_NAME" ] || [ -z "$HEROKU_API_KEY" ]; then
+            echo "HEROKU_APP_NAME and HEROKU_API_KEY must be set in repository secrets" >&2
+            exit 1
+          fi
+          heroku buildpacks:clear -a "$HEROKU_APP_NAME" || true
+          heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static -a "$HEROKU_APP_NAME"
+          cd deploy
+          git remote add heroku "https://heroku:$HEROKU_API_KEY@git.heroku.com/${HEROKU_APP_NAME}.git"
+          git push heroku main -f
