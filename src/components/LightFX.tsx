@@ -28,19 +28,19 @@ export default function LightFX() {
       const t = (performance.now() - start) / 1000
       ctx.clearRect(0, 0, width, height)
 
-      // Three moving radial gradients with different hues
+      // Three moving radial gradients with brand hues (blue/green/teal)
       for (let i = 0; i < 3; i++) {
         const x = (Math.sin(t * (0.25 + i * 0.1) + i) * 0.35 + 0.5) * width
         const y = (Math.cos(t * (0.3 + i * 0.12) + i) * 0.35 + 0.5) * height
-        const r = Math.max(width, height) * 0.6
+        const r = Math.max(width, height) * 0.55
         const g = ctx.createRadialGradient(x, y, 0, x, y, r)
-        const a = 0.12
+        const a = 0.10
         if (i === 0) {
-          g.addColorStop(0, `rgba(23,178,106,${a})`)
+          g.addColorStop(0, `rgba(30,136,229,${a})`) // blue
         } else if (i === 1) {
-          g.addColorStop(0, `rgba(168,85,247,${a})`)
+          g.addColorStop(0, `rgba(23,178,106,${a})`) // green
         } else {
-          g.addColorStop(0, `rgba(197,157,95,${a})`)
+          g.addColorStop(0, `rgba(17,94,89,${a})`) // teal
         }
         g.addColorStop(1, 'rgba(255,255,255,0)')
         ctx.fillStyle = g

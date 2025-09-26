@@ -18,9 +18,9 @@ body {
 /* Premium animated background utilities */
 .bg-grid-surface {
   background-image:
-    radial-gradient(30rem 30rem at 10% 10%, rgba(168,85,247,.18), transparent 60%),
-    radial-gradient(28rem 28rem at 90% 20%, rgba(23,178,106,.18), transparent 60%),
-    radial-gradient(28rem 28rem at 30% 90%, rgba(197,157,95,.18), transparent 60%),
+    radial-gradient(30rem 30rem at 10% 10%, rgba(30,136,229,.16), transparent 60%),
+    radial-gradient(28rem 28rem at 90% 20%, rgba(23,178,106,.16), transparent 60%),
+    radial-gradient(28rem 28rem at 30% 90%, rgba(17,94,89,.10), transparent 60%),
     linear-gradient(to bottom, rgba(20,20,20,.02), rgba(20,20,20,0));
 }
 

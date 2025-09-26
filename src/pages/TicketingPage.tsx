@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState, type ReactNode } from 'react'
-import { QrCode, Users2, CreditCard, BarChart3, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, QrCode, CreditCard, Users2, BarChart3, ShieldCheck } from 'lucide-react'
 
-export default function Ticketing() {
+export default function TicketingPage() {
   return (
     <div className="relative overflow-hidden">
       {/* HERO */}
@@ -54,7 +54,6 @@ export default function Ticketing() {
           <Counter value={22} label="schnellerer Einlass" suffix="%" />
           <Counter value={4.8} label="Kundenzufriedenheit" suffix="/5" />
         </div>
-
         <div className="mt-12">
           <ROICalculator />
         </div>
@@ -147,7 +146,7 @@ function ROICalculator() {
           <div className="text-3xl font-extrabold">{savedTickets}</div>
           <div className="mt-4 text-sm text-gray-600">Mehrumsatz durch weniger No‑Shows</div>
           <div className="text-2xl font-bold">€ {extraRevenue.toLocaleString('de-AT')}</div>
-          <div className="mt-4 text-sm text-gray-600">Uplift durch upsell</div>
+          <div className="mt-4 text-sm text-gray-600">Uplift durch Upsell</div>
           <div className="text-2xl font-bold">€ {upsellRevenue.toLocaleString('de-AT')}</div>
           <div className="mt-6 text-sm text-gray-600">Geschätzter Gesamt-Impact</div>
           <div className="text-3xl font-extrabold text-green-600">€ {total.toLocaleString('de-AT')}</div>
@@ -157,17 +156,17 @@ function ROICalculator() {
   )
 }
 
-function NumberInput({ label, value, setValue, min, max }: { label: string; value: number; setValue: (v: number) => void; min: number; max: number }) {
+function NumberInput({ label, value, setValue, min, max }: { label: string; value: number; setValue: (n: number) => void; min: number; max: number }) {
   return (
     <label className="block">
-      <span className="block text-sm font-medium text-gray-700">{label}</span>
+      <div className="text-sm text-gray-700 mb-1">{label}</div>
       <input
         type="number"
-        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        className="w-full rounded-md border border-gray-200 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
         value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
         min={min}
         max={max}
+        onChange={(e) => setValue(Number(e.target.value))}
       />
     </label>
   )
