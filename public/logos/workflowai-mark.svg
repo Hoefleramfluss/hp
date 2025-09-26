@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="96" height="96" role="img" aria-label="WorkFlowAI mark">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E88E5"/>
+      <stop offset="100%" stop-color="#17B26A"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="128" height="128" rx="24" fill="#ffffff"/>
+  <g transform="translate(64,64)">
+    <circle r="46" fill="none" stroke="#1E88E5" stroke-width="4" opacity="0.35"/>
+    <circle r="34" fill="none" stroke="#17B26A" stroke-width="4" opacity="0.35"/>
+    <path d="M-24,-10c6,-12,22,-16,34,-6c10,9,8,26,-5,34c-14,9,-31,2,-36,-12" fill="none" stroke="url(#g1)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M24,10c-6,12,-22,16,-34,6c-10,-9,-8,-26,5,-34c14,-9,31,-2,36,12" fill="none" stroke="url(#g1)" stroke-width="12" stroke-linecap="round"/>
+    <g fill="#1E88E5">
+      <circle cx="-40" cy="0" r="3"/>
+      <circle cx="40" cy="0" r="3"/>
+      <circle cx="0" cy="-40" r="3"/>
+      <circle cx="0" cy="40" r="3"/>
+    </g>
+  </g>
+</svg>

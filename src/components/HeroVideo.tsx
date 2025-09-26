@@ -36,22 +36,24 @@ export default function HeroVideo() {
     return () => document.removeEventListener('visibilitychange', onVisibility)
   }, [shouldReduce])
 
-  if (shouldReduce) return null
+  // Temporarily disable video to avoid any visual artifacts in the hero background
+  return null
 
-  return (
-    <video
-      ref={videoRef}
-      className="absolute inset-0 -z-10 h-full w-full object-cover opacity-65 mix-blend-soft-light"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-hidden="true"
-      poster="/vite.svg"
-    >
-      {srcWebm && <source src={srcWebm} type="video/webm" />}
-      <source src={srcMp4 || fallbackMp4} type="video/mp4" />
-    </video>
-  )
+  // Old implementation preserved below for easy re-enable
+  // return (
+  //   <video
+  //     ref={videoRef}
+  //     className="absolute inset-0 -z-10 h-full w-full object-cover opacity-65 mix-blend-soft-light"
+  //     autoPlay
+  //     muted
+  //     loop
+  //     playsInline
+  //     preload="metadata"
+  //     aria-hidden="true"
+  //     poster="/vite.svg"
+  //   >
+  //     {srcWebm && <source src={srcWebm} type="video/webm" />}
+  //     <source src={srcMp4 || fallbackMp4} type="video/mp4" />
+  //   </video>
+  // )
 }
