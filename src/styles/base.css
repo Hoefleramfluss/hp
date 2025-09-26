@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap");
+
+:root{
+  --bg:#0B0F14; --fg:#F5F7FA; --muted:#B7C0CC; --dim:#9AA3AE;
+  --card:#11161D; --border:rgba(255,255,255,.12);
+  --accent:#22c55e; /* Grün – bei Bedarf ans Logo anpassen */
+  --accent-2:#0ea5e9; --radius:16px;
+  --s-1:8px; --s-2:12px; --s-3:16px; --s-4:24px; --s-5:32px; --s-6:48px; --s-7:64px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+img,video{max-width:100%; height:auto; display:block}
+a{color:inherit; text-decoration:none}
+.container{max-width:1180px; margin:0 auto; padding:0 var(--s-4)}
+.section{padding:var(--s-7) 0} .section-sm{padding:var(--s-6) 0}
+h1,h2,h3{margin:0 0 var(--s-3)} h1{font-size:clamp(32px,4.5vw,56px); line-height:1.1; letter-spacing:-0.02em}
+h2{font-size:clamp(24px,3vw,32px)} h3{font-size:clamp(18px,2.2vw,22px); color:var(--fg)}
+p.lead{color:#E7ECF2} .muted{color:var(--muted)} .dim{color:var(--dim)}
+.btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; font-weight:600; font-size:15px; border:1px solid transparent; cursor:pointer}
+.btn-primary{background:var(--accent)} .btn-primary:hover{filter:brightness(.95)}
+.btn-secondary{border-color:var(--border); background:transparent} .btn-secondary:hover{background:rgba(255,255,255,.04)}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:var(--s-5); box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.grid-3{display:grid; gap:var(--s-4); grid-template-columns:1fr} @media (min-width:900px){ .grid-3{ grid-template-columns:repeat(3,1fr) } }
+.badge{display:inline-flex; align-items:center; gap:10px; font-size:12px; border:1px solid var(--border); padding:6px 10px; border-radius:999px; color:#E9EEF6}
+.small{font-size:12px; color:var(--dim)} .center{text-align:center}
+.hero{position:relative; overflow:hidden; isolation:isolate}
+.hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.22}
+.hero::after{content:""; position:absolute; inset:0; background:radial-gradient(1200px 500px at 20% 0%, rgba(34,197,94,.20), transparent)}
+.hero .inner{position:relative; padding:110px 0}
+.hero .trust{display:flex; gap:12px; flex-wrap:wrap}
+.fade-in{opacity:0; transform:translateY(8px); animation:fade .2s ease forwards}
+.fade-in.delay-1{animation-delay:.05s} .fade-in.delay-2{animation-delay:.1s} .fade-in.delay-3{animation-delay:.15s}
+@keyframes fade{to{opacity:1; transform:none}}
+.pricing{display:grid; gap:var(--s-4); grid-template-columns:1fr} @media (min-width:900px){ .pricing{grid-template-columns:repeat(2,1fr)}}
+.plan h3{margin-bottom:8px} .price{font-size:28px; font-weight:700; margin:4px 0 16px}
+.faq details{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px}
+.faq summary{cursor:pointer; font-weight:600} .faq details + details{margin-top:12px}
+.footer{padding:var(--s-6) 0; border-top:1px solid var(--border); color:var(--dim); font-size:14px}
