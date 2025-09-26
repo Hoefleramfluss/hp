@@ -13,9 +13,9 @@ export default function Home() {
   const [problem, setProblem] = useState<'telefon' | 'admin' | null>(null)
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-grid-surface noise-overlay">
       {/* Hero Section with stronger parallax via useScroll */}
-      <section className="relative" ref={heroRef}>
+      <section className="relative shine" ref={heroRef}>
         <div className="absolute inset-0 -z-10 pointer-events-none">
           <motion.div style={{ y: y1 }} className="h-[60vh] sm:h-[70vh] bg-gradient-to-b from-medical-primary/90 to-white" />
           <motion.div style={{ y: y2 }} className="absolute inset-x-0 top-10 mx-auto max-w-5xl h-64 blur-3xl rounded-full bg-gradient-to-r from-events-accent/40 via-medical-accent/40 to-gastro-accent/30" />
@@ -29,10 +29,10 @@ export default function Home() {
               Unsere autonomen KI-Agenten managen Ihre Anrufe und Prozesse, damit Sie wieder das tun, was Sie lieben.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="mt-8 flex flex-wrap gap-3">
-              <Link to="/medical-agent" className="px-6 py-3 rounded-md bg-medical-accent text-white font-semibold shadow-sm hover:shadow">
+              <Link to="/medical-agent" className="px-6 py-3 rounded-md bg-medical-accent text-white font-semibold shadow-lg hover:shadow-xl transition-shadow">
                 Für Praxen
               </Link>
-              <Link to="/tony" className="px-6 py-3 rounded-md bg-gastro-accent text-white font-semibold shadow-sm hover:shadow">
+              <Link to="/tony" className="px-6 py-3 rounded-md bg-gastro-accent text-white font-semibold shadow-lg hover:shadow-xl transition-shadow">
                 Für Gastronomie
               </Link>
             </motion.div>
@@ -104,7 +104,7 @@ function ProblemCard({ title, stats, quote }: { title: string; stats: string; qu
   return (
     <motion.div
       whileHover={{ y: -4 }}
-      className="rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all"
+      className="rounded-xl glass p-6 shadow-lg hover:shadow-xl transition-all"
     >
       <h3 className="font-semibold">{title}</h3>
       <p className="text-sm text-gray-600 mt-2">{stats}</p>
@@ -127,3 +127,4 @@ function Flagship({ title, description, to, color }: { title: string; descriptio
     </motion.div>
   )
 }
+ 
