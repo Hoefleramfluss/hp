@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Users, Stethoscope, Wrench, Phone, Calendar, Shield, Zap, CheckCircle, Lock, Menu, X } from 'lucide-react'
+import HeroVideo from '../components/HeroVideo'
 
 /* BACKUP - OLD HERO CONTENT:
 {/* Hero Section *//*}
@@ -75,7 +76,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="hero-new reveal" aria-label="Hero">
-        <div className="hero-bg-new"></div>
+        <HeroVideo />
         <div className="container">
           <div className="hero-content-new">
             <h1 className="hero-h1">Autonomie statt Apps.</h1>
