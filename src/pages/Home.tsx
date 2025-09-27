@@ -160,28 +160,27 @@ export default function Home() {
       {/* Demo Section */}
       <section id="demo" className="section-new demo-new reveal">
         <div className="container">
+          <h2 style={{textAlign: 'center', marginBottom: '2rem', color: 'white'}}>Live Demo</h2>
           <div className="demo-video-new">
             <video 
-              autoPlay 
+              controls
               muted 
-              loop 
               playsInline 
               poster="/video/hero-poster.jpg"
               className="demo-video-element"
-              onError={(e) => {
-                const target = e.currentTarget
-                const fallback = document.createElement('div')
-                fallback.className = 'demo-fallback-new'
-                fallback.innerHTML = `
-                  <div class="demo-placeholder-new">
-                    <div class="demo-play-btn"><svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-                    <p>Demo-Video wird geladen...</p>
-                  </div>
-                `
-                target.parentNode?.replaceChild(fallback, target)
+              style={{
+                width: '100%',
+                maxWidth: '800px',
+                height: 'auto',
+                borderRadius: '12px',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.4)'
               }}
             >
               <source src="/video/hero-video.mp4" type="video/mp4" />
+              <p style={{color: 'white', textAlign: 'center', padding: '2rem'}}>
+                Ihr Browser unterstützt das Video-Element nicht. 
+                <a href="/video/hero-video.mp4" style={{color: '#33cc66'}}>Video direkt ansehen</a>
+              </p>
             </video>
           </div>
           <div className="how-steps-new">
