@@ -5,25 +5,41 @@ const HERO_VIDEO_POSTER = '/video/hero-poster.jpg'
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [shouldAutoplay, setShouldAutoplay] = useState(false)
+  const [allowMotion, setAllowMotion] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (prefersReducedMotion.matches) return
-    setShouldAutoplay(true)
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updateMotionPreference = () => {
+      setAllowMotion(!mediaQuery.matches)
+    }
+
+    updateMotionPreference()
+    mediaQuery.addEventListener?.('change', updateMotionPreference)
+    mediaQuery.addListener?.(updateMotionPreference)
+
+    return () => {
+      mediaQuery.removeEventListener?.('change', updateMotionPreference)
+      mediaQuery.removeListener?.(updateMotionPreference)
+    }
   }, [])
 
   useEffect(() => {
-    if (!shouldAutoplay) return
     const node = videoRef.current
-    node?.play().catch(() => {
-      /* Autoplay might be blocked; ignore silently */
-    })
-  }, [shouldAutoplay])
+    if (!node) return
+
+    if (allowMotion) {
+      node.play().catch(() => {
+        /* Autoplay might be blocked; ignore silently */
+      })
+    } else {
+      node.pause()
+      node.currentTime = 0
+    }
+  }, [allowMotion])
 
   return (
-    <div className="hero-video-layer" aria-hidden="true">
+    <div className="hero-video-layer" aria-hidden={!allowMotion}>
       <video
         ref={videoRef}
         className="hero-video"
@@ -32,7 +48,7 @@ export default function HeroVideo() {
         muted
         loop
         preload="metadata"
-        autoPlay={shouldAutoplay}
+        autoPlay
       >
         <source src={HERO_VIDEO_SRC} type="video/mp4" />
       </video>

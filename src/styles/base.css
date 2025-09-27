@@ -184,11 +184,11 @@ html{scroll-behavior:smooth}
 .nav-mobile-link:hover{color:var(--fg)}
 
 /* Hero New */
-.hero-new{position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; isolation:isolate; background:#06080d}
-.hero-video-layer{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; background:linear-gradient(135deg, #06080d 0%, #0B0F14 40%, #06080d 100%)}
-.hero-video{width:100%; height:100%; object-fit:cover; filter:saturate(115%) contrast(105%); opacity:0.85}
-.hero-video-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,8,13,0.55) 0%, rgba(6,8,13,0.8) 60%, rgba(6,8,13,0.95) 100%), radial-gradient(800px 400px at 30% 20%, rgba(51,204,102,0.15), transparent 70%)}
-.hero-video-layer::after{content:""; position:absolute; inset:-40% -20%; background:radial-gradient(1200px 500px at 85% 15%, rgba(51,153,255,0.12), transparent 60%); mix-blend-mode:screen; opacity:0.65}
+.hero-new{position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; isolation:isolate; background:#05070b}
+.hero-video-layer{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; background:linear-gradient(135deg, #05070b 0%, #0B0F14 35%, #05070b 100%)}
+.hero-video{width:100%; height:100%; object-fit:cover; filter:saturate(120%) contrast(108%); opacity:0.92; transform:scale(1.02)}
+.hero-video-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(5,7,11,0.35) 0%, rgba(5,7,11,0.6) 55%, rgba(5,7,11,0.85) 100%), radial-gradient(780px 360px at 30% 20%, rgba(51,204,102,0.22), transparent 70%)}
+.hero-video-layer::after{content:""; position:absolute; inset:-35% -20%; background:radial-gradient(1200px 500px at 85% 15%, rgba(51,153,255,0.18), transparent 60%); mix-blend-mode:screen; opacity:0.75}
 .hero-content-new{position:relative; z-index:2; text-align:center; padding:var(--s-7) 0}
 .hero-h1{font-size:clamp(48px,8vw,96px); font-weight:800; line-height:1.1; letter-spacing:-0.02em; margin-bottom:var(--s-4); background:linear-gradient(135deg, #F5F7FA 0%, #B7C0CC 100%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; color:transparent}
 .hero-subline{font-size:clamp(20px,3vw,28px); color:var(--muted); margin-bottom:var(--s-6); max-width:800px; margin-left:auto; margin-right:auto}
