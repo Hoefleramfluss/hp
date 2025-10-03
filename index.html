@@ -1,59 +1,70 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="KI-Agents & Voicebots für Gastro, Arztpraxis & Werkstatt. Pilot gratis; nur ~€0,23/Min 1:1 weiterverrechnet. DSGVO-konform, EU-Server, Made in Austria." />
-    <meta name="theme-color" content="#0B0F14" />
-    <!-- OpenGraph / Twitter -->
-    <meta property="og:title" content="Workflow AI – Autonomie statt Apps." />
-    <meta property="og:description" content="KI-Agents & Voicebots für Gastro, Arztpraxis & Werkstatt. Pilot gratis; nur ~€0,23/Min 1:1 weiterverrechnet." />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/voxon-favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>VoxOn.ai – Autonome Voice & Chat Agenten</title>
+    <meta name="title" content="VoxOn.ai – Autonome Voice & Chat Agenten" />
+    <meta name="description" content="VoxOn.ai – autonome Voice & Chat Agenten, die Termine buchen, Daten erfassen und Routineaufgaben übernehmen. DSGVO-konform, made in Austria." />
+    <meta name="keywords" content="KI-Agenten, Voice Agents, Chat Agents, Terminbuchung, Workflow Automatisierung, DSGVO, Made in Austria, Praxis Software, Werkstatt Software" />
+    <meta name="author" content="VoxOn.ai" />
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://geminihp-site-11d0c1c1f713.herokuapp.com/" />
-    <meta property="og:image" content="/img/og-hero.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Workflow AI – Autonomie statt Apps." />
-    <meta name="twitter:description" content="KI-Agents & Voicebots für Gastro, Arztpraxis & Werkstatt. Pilot gratis; nur ~€0,23/Min 1:1 weiterverrechnet." />
-    <meta name="twitter:image" content="/img/og-hero.jpg" />
-
-    <!-- Preload fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-    <title>Workflow AI – Autonomie statt Apps.</title>
+    <meta property="og:site_name" content="VoxOn.ai" />
+    <meta property="og:title" content="VoxOn.ai – Autonome Voice & Chat Agenten" />
+    <meta property="og:description" content="VoxOn.ai – autonome Voice & Chat Agenten, die Termine buchen, Daten erfassen und Routineaufgaben übernehmen." />
+    <meta property="og:image" content="https://voxon.app/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://voxon.app/" />
+    <meta name="twitter:title" content="VoxOn.ai – Autonome Voice & Chat Agenten" />
+    <meta name="twitter:description" content="VoxOn.ai – autonome Voice & Chat Agenten, die Termine buchen, Daten erfassen und Routineaufgaben übernehmen." />
+    <meta property="twitter:image" content="https://voxon.app/og-image.jpg" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://voxon.app/" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Workflow AI",
-      "description": "KI-Agents & Voicebots für Gastronomie, Arztpraxen & Werkstätten",
-      "url": "https://geminihp-site-11d0c1c1f713.herokuapp.com/",
-      "logo": "https://geminihp-site-11d0c1c1f713.herokuapp.com/img/logo.png",
-      "foundingDate": "2025",
+      "name": "Workflow.AI",
+      "url": "https://voxon.app",
+      "logo": "https://voxon.app/logo.png",
+      "description": "KI-Agenten für Praxis, Werkstatt & Gastro – DSGVO-konform, fair, transparent",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "AT"
       },
-      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Sales",
+        "email": "kontakt@workflow-ai.de"
+      },
+      "sameAs": []
     }
     </script>
-    <meta name="color-scheme" content="dark light">
   </head>
-  <body>
-    <style>
-    .reveal{opacity:0;transform:translateY(6px);transition:opacity .15s ease,transform .15s ease}
-    .reveal.in{opacity:1;transform:none}
-    </style>
-    <script>
-    const io=new IntersectionObserver(es=>es.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target)}
-    }),{threshold:.12});
-    window.addEventListener('DOMContentLoaded',()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)));
-    </script>
+  <body class="bg-voxon-dark text-white antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-  
 </html>

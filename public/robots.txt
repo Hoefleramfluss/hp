@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
 
-Sitemap: https://geminihp-site-11d0c1c1f713.herokuapp.com/sitemap.xml
+Sitemap: https://voxon.app/sitemap.xml

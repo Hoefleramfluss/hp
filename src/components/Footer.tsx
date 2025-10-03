@@ -1,41 +1,120 @@
-export default function Footer() {
+import VoxonLogo from '../assets/voxon-logo.png'
+
+const navigation = {
+  solutions: [
+    { name: 'VoxOn Med', href: '#products' },
+    { name: 'VoxOn Tec', href: '#products' },
+    { name: 'VoxOn Gastro', href: '#products' },
+    { name: 'VoxOn Custom Agents', href: '#products' },
+  ],
+  company: [
+    { name: 'Über uns', href: '#' },
+    { name: 'Preise', href: '#pricing' },
+    { name: 'Features', href: '#features' },
+  ],
+  legal: [
+    { name: 'Datenschutz', href: '/datenschutz.html' },
+    { name: 'Impressum', href: '/impressum.html' },
+  ],
+}
+
+const Footer = () => {
   return (
-    <footer className="border-t border-gray-100 mt-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-gradient-to-tr from-events-accent to-medical-accent" />
-            <span className="font-semibold">VoiceAgents</span>
+    <footer className="bg-black/50 border-t border-white/5" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">Footer</h2>
+      
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          {/* Brand Section */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-3">
+              <div className="relative flex items-center">
+                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-neon-cyan/40 to-electric-violet/30 blur-lg opacity-60" />
+                <img src={VoxonLogo} alt="VoxOn.ai" className="relative h-12 w-auto" loading="lazy" />
+              </div>
+              <span className="text-2xl font-bold text-white">VoxOn.ai</span>
+            </div>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Voice & Chat Agents, die deine Teams entlasten. Echtzeit-Assistenz, nahtlose Integrationen, volle Kontrolle.
+            </p>
+            <div className="text-sm text-gray-500">
+              Made with ❤️ in Austria · DSGVO-konform
+            </div>
           </div>
-          <p className="text-sm text-gray-600 mt-3">Agenten, nicht Apps. Autonomie, nicht nur Automation.</p>
-          <p className="text-xs text-gray-500 mt-2">Made in Austria 🇦🇹</p>
+
+          {/* Links Grid */}
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-white">Lösungen</h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.solutions.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold text-white">Unternehmen</h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {navigation.company.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-white">Rechtliches</h3>
+              <ul role="list" className="mt-6 space-y-4">
+                {navigation.legal.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8">
+                <h3 className="text-sm font-semibold text-white mb-4">Kontakt</h3>
+                <a
+                  href="mailto:hello@voxon.ai"
+                  className="text-sm text-neon-cyan hover:text-white transition-colors"
+                >
+                  hello@voxon.ai
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h4 className="font-semibold mb-3">Produkte</h4>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li><a href="/medical-agent" className="hover:text-black">Workflow Medical Agent</a></li>
-            <li><a href="/tony" className="hover:text-black">Tony – Gastronomie</a></li>
-            <li><a href="/werkstatt-manager" className="hover:text-black">Werkstatt-Manager</a></li>
-            <li><a href="/ticketing" className="hover:text-black">Ticketing-Plattform</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-3">Ressourcen</h4>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li><a href="/demos" className="hover:text-black">Interaktive Demos</a></li>
-            <li><a href="/pricing" className="hover:text-black">Pricing</a></li>
-            <li><a href="#" className="hover:text-black">Datenschutz</a></li>
-            <li><a href="#" className="hover:text-black">Impressum</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-3">Kontakt</h4>
-          <p className="text-sm text-gray-600">VoiceAgents GmbH</p>
-          <p className="text-sm text-gray-600">Wien, Österreich</p>
-          <p className="text-sm text-gray-600 mt-2">Socials: <a className="underline" href="#">LinkedIn</a></p>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
+          <p className="text-xs text-gray-500 text-center">
+            © {new Date().getFullYear()} VoxOn.ai. Alle Rechte vorbehalten.
+          </p>
         </div>
       </div>
-      <div className="py-6 text-center text-xs text-gray-500">© {new Date().getFullYear()} VoiceAgents – Alle Rechte vorbehalten.</div>
     </footer>
   )
 }
+
+export default Footer
