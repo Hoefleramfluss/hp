@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "voxon-app",
+    "site": "hpgit-28985014-effd6",
     "public": "dist",
     "ignore": [
       "**/.*",
