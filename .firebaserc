@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "voxon-app"
+    "default": "voxon-prod"
   }
 }
